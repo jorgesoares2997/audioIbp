@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'index')
+@section('title', 'Audio IBP')
 
 @section('content')
 
@@ -21,57 +21,50 @@
         </div>
     
     </div>
-    <!-- About area  -->
-    <div id='about-area'>
-        <div class="container">
-            <div class='row'>
-                <div class='col-12'>
-                    <h2 class='main-title'>Sobre a equipe de audio</h2>
-                </div>
-                <div class="col-md-6"><img id='mix' src="/img/mix.jpg" alt="equipe de audio"></div>
-                    <div class="col-md-6">
-                        <h3 class="about-title">Vivemos a Igreja nas Casas.</h3>
-                        <p>Somos uma equipe que atua na <a href="https://keepo.io/ibprazeres/">IBP</a></p>
-                        <p>Essa equipe foi formada á partir do crescimento da área do audio e da sonoplastia da Igreja Batista em Prazeres </p>
-                        <p>Uma Igreja referencia em questões acústicas em Jaboatão dos Guararapes-PE</p>
-                        <p>Nossos Valores:</p>
-                            <ul id="about-list">
-                                <li><ion-icon name="checkmark-sharp"></ion-icon> Somos Um grupo de voluntários</li>
-                                <li><ion-icon name="checkmark-sharp"></ion-icon> Atuamos de maneira viva e inovadora</li>
-                                <li><ion-icon name="checkmark-sharp"></ion-icon> Integramos outras áreas de atuaçao, como iluminação e streaming</li>
-                                <li><ion-icon name="checkmark-sharp"></ion-icon> Valorizamos o aprendizado e o uso cotidiano</li>
-                                <li><ion-icon name="checkmark-sharp"></ion-icon> Damos oportunidades de desenvolvimento ministerial</li>
-                            </ul>
-                    </div>
-                </div>
+    <!-- Busca  -->
+    <div id="search-container" class="col-md-12">
+    <h1>Busque um equipamento</h1>
+    <form action="/" method="GET">
+        <input  type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
+        <button class='btn btn-dark'><ion-icon  name='search'></ion-icon></button>
+    </form>
+</div>
+<div id="equips-container" class="col-md-12">
+    @if($search)
+    <h2>Buscando por: {{ $search }}</h2>
+    @else
+    <h2>Dashboard</h2>
+    <p class="subtitle">Veja os equipamentos documentados</p>
+    @endif
+    <!-- dashboard -->
+    <div id="cards-container" class="row">
+        @foreach($equips as $equip)
+        <div class="card col-md-3">
+            @if($equip->image)
+            <img src="/img/equips/{{ $equip->image }}" alt="{{ $equip->name }}">
+            @else
+            <img src="/img/casa.png" alt="{{$equip->name}}">
+            @endif
+            <div class="card-body">
+                <p class="card-date">{{ date('d/m/Y', strtotime($equip->date)) }}</p>
+                <h5 class="card-title">{{ $equip->name }}</h5>
+                <p> {{$equip->condit}}</p>
+                
+
+                <a href="/events/{{ $equip->id }}" class="btn btn-dark">Saber mais</a>
+                
             </div>
-    </div>
-    <!-- Iframe area  -->
-    <div id='iframe-area'>
-        <div class="container">
-            <div class="column">
-                <div class="col-12">
-                    <h2 class="main-title">Conheça nossa Instituição</h2>
-                </div>
-                <h3 class="main-title">Nosso Podcast</h3>
-                <div class='iframe'>
-    
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/q3wDi46xVj4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        <p>Nosso podcast alcança publicos<br> e aborda assuntos que o<br> culto convencional(que apesar de ser vital),<br> não pode alcançar ou abordar.</p>
-                    </div>
-                <h3 class="main-title">Nossa identidade</h3>
-                <div class='iframe'>
-    
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3trEvuPvEco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        <p>Conheça a nossa identidade,<br> os valores que não abrimos mão<br> e que nos faz ser quem somos.</p>
-                    </div>
-                <div>
-    
-                </div>
-             </div>
         </div>
+        @endforeach
+        @if(count($equips) == 0 && $search)
+            <p>Não foi possível encontrar nenhum equipamento com {{ $search }}! <a href="/">Ver todos</a></p>
+        @elseif(count($equips) == 0)
+            <p>Não há equipamentos disponíveis</p>
+        @endif
     </div>
-    
+</div>
+   
+
 </main>
 
 
