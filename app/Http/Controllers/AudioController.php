@@ -116,6 +116,9 @@ class AudioController extends Controller
     public function update(Request $request){
         $data = $request->all();
 
+       
+        
+
         if($request->hasFile('image') && $request->file('image')->isValid()) {
 
             $requestImage = $request->image;
@@ -129,27 +132,20 @@ class AudioController extends Controller
             $data['image'] = $imageName;
 
         }
+        
 
         Audio::findOrFail($request->id)->update($data);
+
+        
         return redirect('/')->with('msg', 'Equipamento editado com sucesso!');
     }
 
     public function updateProfile(Request $request){
 
+        $data = $request->all();
 
+        $user = auth()->user();
 
-        $usuario = new User;
-
-        $usuario->name = $request->name;
-        $usuario->aniversario = $request->aniversario;
-        $usuario->bio = $request->bio;
-        $usuario->email = $request->email;
-        $usuario->password = $request->password;
-      
-        
-        
-
-        // Image Upload
         if($request->hasFile('image') && $request->file('image')->isValid()) {
 
             $requestImage = $request->image;
@@ -160,20 +156,17 @@ class AudioController extends Controller
 
             $requestImage->move(public_path('img/user'), $imageName);
 
-            $usuario->image = $imageName;
+            $user['image'] = $imageName;
 
         }
 
-        $user = auth()->user();
+       
 
-        $usuario->id = $user->id;
+       
 
-        $usuario->save();        
-        
-      
+        User::findOrFail($user->id)->update($data);
 
-
-        return redirect('dashboard')->with('msg', 'Foto atualizada com sucesso!'. $imageName);
+        return redirect('dashboard')->with('msg', 'Perfil atualizado com sucesso!');
     }
 
     public function show($id) {
