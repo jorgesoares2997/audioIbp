@@ -4,11 +4,6 @@
 
 @section('content')
 
-<h1>hello</h1>
-<h2>{{$equipOwner['name']}}</h2>
-
-
-
-
+<h1>olá</h1>
 
 @endsection

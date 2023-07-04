@@ -9,7 +9,7 @@
 <div class='equipamentos'>
 <h1>Equipamentos para manutenção</h1>
 <p>Nessa área, você pode adicionar equipamentos que sofreram avarias ou precisam de manutenção preventiva,<br> fazendo isso, outros membros da equipe tomam conhecimento e podem executar esse serviço ou mandar para mão de obra especializada. 
-<br>Você tambem pode visualizar equipamentos já documentados na página de <a href="/equipamentos">Equipamentos</a></p>
+<br>Você tambem pode visualizar equipamentos já documentados na página de <a href="/">Equipamentos</a></p>
     
     <div class="col-md-6 offset-md-3">
       <h1>Adicione um equipamento</h1>

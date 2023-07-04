@@ -13,6 +13,8 @@ class AudioController extends Controller
     
     public function index() {
 
+       
+
     $search = request('search');
 
     $user = auth()->user();
@@ -28,7 +30,7 @@ class AudioController extends Controller
         $equips = Audio::all();
     }        
 
-    return view('welcome',['equips' => $equips, 'search' => $search]);
+    return view('welcome',['equips' => $equips, 'search' => $search, 'user' => $user]);
 
 }
 
@@ -49,18 +51,14 @@ class AudioController extends Controller
         return view('equipamentos', ['equips'=>$equips]);
     }
 
-    public function dashboard() {
-
-        $equip = Audio::findOrFail($id);
-
-        $user = auth()->user();
-
-        $hasUserJoined = false;
-
-        $equipOwner = User::where('id', $equip->user_id)->first()->toArray();
-    
+    public function dashboard() { 
         
-        return view('events.dashboard', ['equip' => $equip, 'hasUserJoined' => $hasUserJoined, 'equipOwner'=>$equipOwner]);
+
+
+        $usuario = auth()->user();
+
+
+        return view('dashboard', ['usuario' => $usuario]);
 
     }
     public function store(Request $request) {
@@ -104,15 +102,16 @@ class AudioController extends Controller
     }
 
     public function edit($id){
+
         $equip = Audio::findOrFail($id);
         
         $user = auth()->user();        
 
         if($user->id != $equip->user->id){
-            return redirect('/dashboard')->with('msg', 'Você não pode editar o equipamento ' . $equip->name . ' por não ser o criador do equipamento ');
+            return redirect('/')->with('msg', 'Você não pode editar o equipamento ' . $equip->name . ' por não ser o criador do equipamento ');
         }
 
-        return view('equipamentos.edit', ['equip' =>$equip]);
+        return view('events.edit', ['equip' =>$equip]);
     }
     public function update(Request $request){
         $data = $request->all();
@@ -132,7 +131,49 @@ class AudioController extends Controller
         }
 
         Audio::findOrFail($request->id)->update($data);
-        return redirect('dashboard')->with('msg', 'Audio editado com sucesso!');
+        return redirect('/')->with('msg', 'Equipamento editado com sucesso!');
+    }
+
+    public function updateProfile(Request $request){
+
+
+
+        $usuario = new User;
+
+        $usuario->name = $request->name;
+        $usuario->aniversario = $request->aniversario;
+        $usuario->bio = $request->bio;
+        $usuario->email = $request->email;
+        $usuario->password = $request->password;
+      
+        
+        
+
+        // Image Upload
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $requestImage->move(public_path('img/user'), $imageName);
+
+            $usuario->image = $imageName;
+
+        }
+
+        $user = auth()->user();
+
+        $usuario->id = $user->id;
+
+        $usuario->save();        
+        
+      
+
+
+        return redirect('dashboard')->with('msg', 'Foto atualizada com sucesso!'. $imageName);
     }
 
     public function show($id) {

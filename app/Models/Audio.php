@@ -10,8 +10,8 @@ class Audio extends Model
     use HasFactory;
     
     protected $casts = [
-        'equips' => 'array'
-        
+        'equips' => 'array',
+                
     ];  
 
     protected $dates = ['date'];

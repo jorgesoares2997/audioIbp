@@ -20,8 +20,8 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid" id='cabeca'>
       
-      <a class="navbar-brand" href="/"><img src="/img/casa.png" alt="logo da casa"></a>
-      
+      <a class="navbar-brand" href="/dashboard"><img src="/img/casa.png" alt="logo da casa"></a>
+     
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

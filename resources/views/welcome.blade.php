@@ -2,7 +2,11 @@
 
 @section('title', 'Audio IBP')
 
+
+
 @section('content')
+
+
 
 <!-- parallax -->
 <main>
@@ -21,6 +25,7 @@
         </div>
     
     </div>
+    @auth
     <!-- Busca  -->
     <div id="search-container" class="col-md-12">
     <h1>Busque um equipamento</h1>
@@ -63,6 +68,14 @@
         @endif
     </div>
 </div>
+@endauth
+@guest
+<div class="col-md-12">
+    <div class="row">
+        <h1>Faça login para ter acesso á Dashboard de equipamentos</h1>
+    </div>
+</div>
+@endguest
    
 
 </main>
