@@ -96,7 +96,15 @@ class AudioController extends Controller
 
     }
     public function destroy($id){
-        Audio::findOrFail($id)->delete();
+
+        $equip = Audio::findOrFail($id);
+        
+        $user = auth()->user();        
+
+        if($user->id != $equip->user->id){
+            return redirect('/')->with('msg', 'Você não pode excluir o equipamento ' . $equip->name . ' por não ser o criador dessa O.S. ');
+        }
+
 
         return redirect('dashboard')->with('msg', 'equipamento excluído com sucesso!');
     }
@@ -108,7 +116,7 @@ class AudioController extends Controller
         $user = auth()->user();        
 
         if($user->id != $equip->user->id){
-            return redirect('/')->with('msg', 'Você não pode editar o equipamento ' . $equip->name . ' por não ser o criador do equipamento ');
+            return redirect('/')->with('msg', 'Você não pode editar o equipamento ' . $equip->name . ' por não ser o criador dessa O.S. ');
         }
 
         return view('events.edit', ['equip' =>$equip]);

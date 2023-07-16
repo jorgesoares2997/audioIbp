@@ -11,59 +11,61 @@
 
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <title>@yield('title')</title>
     <script src='/js/script.js'></script>
 </head>
 <body>
 <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid" id='cabeca'>
+  
+      <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark">
+        <div class="container-fluid" id='cabeca'>
       
-      <a class="navbar-brand" href="/dashboard"><img src="/img/casa.png" alt="logo da casa"></a>
-     
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" id='iframe-menu' aria-current="page" href='/' >Equipamentos</a>
-          </li>
-  
-            <a class="nav-item nav-link" href='/about' id='about-menu' >Sobre nós</a>
-  
-          <li class="nav-item">
-            <a class="nav-link" href="/equipe">Equipe</a>
-          </li>
-  
-          @auth
-                 <li class="nav-item">  <a class="nav-link" href="/manutencao">manutenção</a></li>
-                <li class="nav-item">
-                  <form action="/logout" method='POST'>
-                    @csrf
-                    <a href="/logout"
-                     class='nav-link'
-                    onclick="event.preventDefault();
-                    this.closest('form').submit();">Sair</a>
-                  </form>
-                </li>
-                @endauth
-                @guest
-                <li class="nav-item">
-                  <a href="/login" class="nav-link">Entrar</a>
-                </li>
-                <li class="nav-item">
-                  <a href="/register" class="nav-link">Cadastrar</a>
-                </li>
-                @endguest
+          <a class="navbar-brand" href="/dashboard"><img src="/img/casa.png" alt="logo da casa"></a>
+      
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           </div>
-        </li>
-        </ul>
-  
-    </div>
-  </nav>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" id='iframe-menu' aria-current="page" href='/' >Equipamentos</a>
+              </li>
+      
+                <a class="nav-item nav-link" href='/about' id='about-menu' >Sobre nós</a>
+      
+              <li class="nav-item">
+                <a class="nav-link" href="/equipe">Equipe</a>
+              </li>
+      
+              @auth
+                     <li class="nav-item">  <a class="nav-link" href="/manutencao">manutenção</a></li>
+                    <li class="nav-item">
+                      <form action="/logout" method='POST'>
+                        @csrf
+                        <a href="/logout"
+                         class='nav-link'
+                        onclick="event.preventDefault();
+                        this.closest('form').submit();">Sair</a>
+                      </form>
+                    </li>
+                    @endauth
+                    @guest
+                    <li class="nav-item">
+                      <a href="/login" class="nav-link">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/register" class="nav-link">Cadastrar</a>
+                    </li>
+                    @endguest
+              </div>
+            </li>
+            </ul>
+      
+        </div>
+      </nav>
+    
 </header>
 <main>
   <div class="container-fluid">
