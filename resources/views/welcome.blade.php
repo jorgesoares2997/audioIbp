@@ -34,7 +34,7 @@
         <button class='btn btn-dark'><ion-icon  name='search'></ion-icon></button>
     </form>
 </div>
-<div id="equips-container" class="col-md-12">
+<div id="equips-container card-group" class="col-md-12 ">
     @if($search)
     <h2>Buscando por: {{ $search }}</h2>
     @else
@@ -42,21 +42,21 @@
     <p class="subtitle">Veja os equipamentos documentados</p>
     @endif
     <!-- dashboard -->
-    <div id="cards-container" class="row">
+    <div id="cards-container" class="row ">
         @foreach($equips as $equip)
-        <div class="card col-md-3">
+        <div class="card col-md-3" id='card' >
             @if($equip->image)
-            <img src="/img/equips/{{ $equip->image }}" alt="{{ $equip->name }}">
+            <img src="/img/equips/{{ $equip->image }}" class='img-fluid rounded-start' alt="{{ $equip->name }}">
             @else
-            <img src="/img/casa.png" alt="{{$equip->name}}">
+            <img src="/img/casa.png" class='img-fluid rounded-start' alt="{{$equip->name}}">
             @endif
             <div class="card-body">
                 <p class="card-date">{{ date('d/m/Y', strtotime($equip->date)) }}</p>
                 <h5 class="card-title">{{ $equip->name }}</h5>
-                <p> {{$equip->condit}}</p>
+                <p class='card-condit'> {{$equip->condit}}</p>
                 
 
-                <a href="/events/{{ $equip->id }}" class="btn btn-dark">Saber mais</a>
+                <a href="/events/{{ $equip->id }}" id='saber-mais' class="btn btn-dark">Saber mais</a>
                 
             </div>
         </div>

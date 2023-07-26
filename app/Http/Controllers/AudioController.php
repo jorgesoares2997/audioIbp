@@ -81,7 +81,7 @@ class AudioController extends Controller
 
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
 
-            $requestImage->move(public_path('img/equips'), $imageName);
+            $requestImage->move(public_path('../public_html/img/equips'), $imageName);
 
             $audio->image = $imageName;
 
@@ -135,7 +135,7 @@ class AudioController extends Controller
 
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
 
-            $requestImage->move(public_path('img/equips'), $imageName);
+            $requestImage->move(public_path('../public_html/img/equips'), $imageName);
 
             $data['image'] = $imageName;
 
@@ -162,7 +162,7 @@ class AudioController extends Controller
 
             $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
 
-            $requestImage->move(public_path('img/user'), $imageName);
+            $requestImage->move(public_path('../public_html/img/user'), $imageName);
 
             $user['image'] = $imageName;
 

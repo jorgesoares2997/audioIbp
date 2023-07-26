@@ -60,7 +60,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                         <div class="col-md-3">
                             <div class="card">
                                 <img src="/img/ihago.jpg" class="card-mg-top" alt="Ihago">
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="card">
-                                <img src="img/profile4.jpg" class="card-mg-top" alt="Imagem de Perfil 4">
+                                <img src="/img/profile4.jpg" class="card-mg-top" alt="Imagem de Perfil 7">
                                 <div class="card-body" >
                                     <h5 class="card-title">Laís Vitória</h5>
                                     <p class="cart-text">Responsabilidade 2</p>

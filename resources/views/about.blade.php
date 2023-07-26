@@ -5,13 +5,15 @@
 @section('content')
 <main id='main-about'>
     
-    <div id='parallax'>
-            <div id='about-about'>
-                
-         
+    <div id='desaparece'>
+        <div id='parallax'>
+                <div id='about-about'>
+        
+        
+                </div>
+        
             </div>
-    
-        </div>
+    </div>
         <!-- About area  -->
         <div id='about-area'>
             <div class="container">
@@ -48,13 +50,13 @@
                     <div class='iframe'>
     
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/q3wDi46xVj4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            <p>Nosso podcast alcança publicos<br> e aborda assuntos que o<br> culto convencional(que apesar de ser vital),<br> não pode alcançar ou abordar.</p>
+                            <p id='card-text'>Nosso podcast alcança publicos<br> e aborda assuntos que o<br> culto convencional(que apesar de ser vital),<br> não pode alcançar ou abordar.</p>
                         </div>
                     <h3 class="main-title">Nossa identidade</h3>
                     <div class='iframe'>
     
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/3trEvuPvEco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                            <p>Conheça a nossa identidade,<br> os valores que não abrimos mão<br> e que nos faz ser quem somos.</p>
+                            <p id='card-text'>Conheça a nossa identidade,<br> os valores que não abrimos mão<br> e que nos faz ser quem somos.</p>
                         </div>
                     
                  </div>
